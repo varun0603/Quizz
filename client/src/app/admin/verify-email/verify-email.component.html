@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>Verify email</mat-card-title>
+  <mat-card-content>
+    <form>
+      <p>
+        <label *ngIf="authService.user as user">
+          we have sent an email verification link to your email <strong>{{user.email}}</strong>
+        </label>
+        <span>Please Check your email and click on the link to verify you email id</span>
+      </p>
+
+      <div class="resend">
+        <button (click)="authService.sendEmailVerification()" color="primary" mat-raised-button type="submit">Resend
+          verification link
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-content>
+    <span class="field" routerLink="/login">Sign In</span>
+  </mat-card-content>
+</mat-card>

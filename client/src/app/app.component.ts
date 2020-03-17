@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Client} from 'colyseus.js';
+import {AuthService} from './auth/auth.service';
 
 
 @Component({
@@ -8,21 +8,15 @@ import {Client} from 'colyseus.js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  ngOnInit() {
-  }
-  constructor() {
+  // tslint:disable-next-line:variable-name
+  constructor(private _authService: AuthService) {
   }
 
-  join(name: string) {
-    const client = new Client('ws://localhost:3000');
-    const room = client.joinOrCreate('my_room', {
-      username: name
-    });
-    console.log(name);
-    room.then(value => value.send('hello'));
-    room.then(value => value.onMessage((msg) => {
-      console.log(msg);
-    }));
-    room.then(value => console.log(value.state));
+  ngOnInit() {
+  }
+
+
+  get authService(): AuthService {
+    return this._authService;
   }
 }

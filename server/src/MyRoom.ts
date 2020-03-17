@@ -1,11 +1,11 @@
-import { Room, Client } from "colyseus";
-import {type, Schema, MapSchema} from '@colyseus/schema';
+import {Client, Room} from "colyseus";
+import {MapSchema, Schema, type} from '@colyseus/schema';
 
 
-class State extends Schema{
+class State extends Schema {
   @type('string') name: string;
   @type({map: 'string'}) players = new MapSchema<boolean>();
-
+  @type({map: 'string'}) data = new MapSchema<string>();
 }
 
 export class MyRoom extends Room {
@@ -17,10 +17,11 @@ export class MyRoom extends Room {
 
   onJoin (client: Client, options: any) {
     console.log(options.username, 'joined', client.id);
-    console.log(client.auth);
     this.state.players[client.sessionId] = client.sessionId;
-    console.log(this.state);
-    this.clients.forEach(console.log);
+    if (this.hasReachedMaxClients()) {
+      this.sendState(client);
+      this.lock().then(() => console.log('max limit reached'));
+    }
   }
 
   onMessage (client: Client, message: any) {

@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form>
+      <p>
+        <mat-form-field>
+          <label>
+            <input #username matInput placeholder="Username" type="text">
+          </label>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <label>
+            <input #password matInput placeholder="Password" type="password">
+          </label>
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="error" class="error">
+        {{ error }}
+      </p>
+
+      <div class="login">
+        <button (click)="submit(username.value, password.value)" color="primary" mat-raised-button type="submit">Login
+        </button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

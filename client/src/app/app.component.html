@@ -1,6 +1,18 @@
-
-<label>
-  <input matInput #name name="in" placeholder="enter message">
-</label>
-<label>{{name.value}}</label>
-<button mat-raised-button (click)="join(name.value)" >submit</button>
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/home">Quiz</button>
+  <span class="flex-fill"></span>
+  <button *ngIf="!authService.isLoggedIn" mat-button routerLink="/register">Register</button>
+  <button *ngIf="!authService.isLoggedIn" mat-button routerLink="/login">Login</button>
+  <mat-icon *ngIf="authService.isLoggedIn" [matMenuTriggerFor]="menu" class="pointer">more_vert</mat-icon>
+  <mat-menu #menu="matMenu" class="menu">
+    <button mat-menu-item routerLink="/profile">
+      <mat-icon color="accent">face</mat-icon>
+      Profile
+    </button>
+    <button (click)="authService.logout()" mat-menu-item>
+      <mat-icon color="warn">logout</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+</mat-toolbar>
+<router-outlet></router-outlet>
