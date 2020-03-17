@@ -1,0 +1,6 @@
+
+<label>
+  <input matInput #name name="in" placeholder="enter message">
+</label>
+<label>{{name.value}}</label>
+<button mat-raised-button (click)="join(name.value)" >submit</button>

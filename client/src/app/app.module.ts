@@ -10,6 +10,7 @@ import {SharedModule} from './shared/shared.module';
 import {HttpClientModule} from '@angular/common/http';
 
 import {MatMenuModule} from '@angular/material/menu';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatMenuModule} from '@angular/material/menu';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    MatMenuModule
+    MatMenuModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
