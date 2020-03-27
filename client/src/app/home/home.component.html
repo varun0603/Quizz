@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row flex-fill">
+    <div class="col-3">
+      <div class="container border-right">
+        <mat-form-field>
+          <mat-label>Select Category</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option *ngFor="let cat of categories" [value]="cat.name">
+              {{cat.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Select level</mat-label>
+          <mat-select [(value)]="level">
+            <mat-option *ngFor="let l of levels" [value]="l">
+              {{l}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button (click)="start()" class="align-content-md-center" mat-stroked-button>Play</button>
+      </div>
+    </div>
+    <div class="col-9">
+      <mat-horizontal-stepper #stepper *ngIf="play" [linear]="true" class="align-content-md-center">
+        <mat-step *ngFor="let q of questions;index as i" label="Question {{this.allQuestions.indexOf(q)+1}}">
+          <h6 [innerHTML]="q.question"></h6>
+          <mat-list>
+            <mat-list-item *ngFor="let op of q.incorrect_answers">
+              <button (click)="next(op,q)" mat-button>
+                <div [innerHTML]="op"></div>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-step>
+      </mat-horizontal-stepper>
+      <div *ngIf="this.stepper" class="row justify-content-center">
+        <button (click)="nextPage()">Next Set</button>
+      </div>
+    </div>
+  </div>
+</div>

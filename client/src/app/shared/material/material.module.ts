@@ -10,6 +10,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -23,7 +26,11 @@ import {MatMenuModule} from '@angular/material/menu';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatStepperModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -35,7 +42,11 @@ import {MatMenuModule} from '@angular/material/menu';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatStepperModule,
+    MatStepperModule,
+    MatSnackBarModule,
+    MatSelectModule
   ],
   declarations: [],
   providers: [

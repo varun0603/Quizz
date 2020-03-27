@@ -3,9 +3,9 @@
   <mat-card-content>
     <form>
       <p>
-        <label *ngIf="authService.user as user">
+        <label *ngIf="user">
           we have sent an email verification link to your email <strong>{{user.email}}</strong>
-        </label>
+        </label><br>
         <span>Please Check your email and click on the link to verify you email id</span>
       </p>
 

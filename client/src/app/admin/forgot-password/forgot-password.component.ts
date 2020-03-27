@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class ForgotPasswordComponent implements OnInit {
     if (authService.isLoggedIn) {
       router.navigate(['/']);
     }
-    authService.afAuth.authState.subscribe(() => {
+    authService.authState.subscribe(() => {
       if (authService.isLoggedIn) {
         this.router.navigate(['/']);
       }

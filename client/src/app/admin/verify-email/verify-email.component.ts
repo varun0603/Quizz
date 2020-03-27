@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../services/auth.service';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-verify-email',
@@ -7,13 +8,10 @@ import {AuthService} from '../../auth/auth.service';
   styleUrls: ['./verify-email.component.css']
 })
 export class VerifyEmailComponent implements OnInit {
+  user: User;
 
-  // tslint:disable-next-line:variable-name
-  constructor(private _authService: AuthService) {
-  }
-
-  get authService(): AuthService {
-    return this._authService;
+  constructor(public authService: AuthService) {
+    authService.user$.subscribe(us => this.user = us);
   }
 
   ngOnInit(): void {

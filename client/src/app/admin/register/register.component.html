@@ -13,6 +13,14 @@
       <p>
         <mat-form-field>
           <label>
+            <input #displayname matInput placeholder="name" type="text">
+          </label>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <label>
             <input #password matInput placeholder="Password" type="password">
           </label>
         </mat-form-field>
@@ -22,7 +30,8 @@
         {{ error }}
       </p>
       <div class="register">
-        <button (click)="signup(username.value, password.value)" color="primary" mat-raised-button type="submit">
+        <button (click)="signup(username.value, password.value, displayname.value)" color="primary" mat-raised-button
+                type="submit">
           Register
         </button>
       </div>

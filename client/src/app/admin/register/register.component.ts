@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     if (authService.isLoggedIn) {
       router.navigate(['home']);
     }
-    authService.afAuth.authState.subscribe(
+    authService.authState.subscribe(
       () => {
         if (authService.isLoggedIn) {
           this.router.navigate(['home']);
@@ -25,8 +25,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async signup(username: string, password: string) {
-    await this.authService.register(username, password).then(value => console.log(value));
+  async signup(username: string, password: string, displayname: string) {
+    await this.authService.register(username, password, displayname);
     await this.router.navigate(['/verify-email']);
   }
 }
